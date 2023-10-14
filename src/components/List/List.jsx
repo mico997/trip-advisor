@@ -7,7 +7,6 @@ import {
   MenuItem,
   FormControl,
   Select,
-  Card,
 } from "@mui/material";
 
 import PlaceDetails from "../PlaceDetails/PlaceDetails";

@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { CssBaseline, Grid } from "@mui/material";
 
-import { getPlacesData, getWeatherData } from "./api";
+import { getPlacesData } from "./api";
 import Header from "./components/Header/Header";
 import List from "./components/List/List";
 import Map from "./components/Map/Map";
 
 const App = () => {
-  const [places, setPlaces] = useState([]);
+  const [type, setType] = useState("restaurants");
+  const [rating, setRating] = useState("");
+
   // const [weatherData, setWeatherData] = useState([]);
   const [filteredPlaces, setFilteredPlaces] = useState([]);
+  const [places, setPlaces] = useState([]);
 
   const [coordinates, setCoordinates] = useState({});
   const [bounds, setBounds] = useState({});
 
   const [childClicked, setChildClicked] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [type, setType] = useState("restaurants");
-  const [rating, setRating] = useState("");
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(

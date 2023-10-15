@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import GoogleMapReact from "google-map-react";
-import { Paper, Typography, useMediaQuery } from "@mui/material";
+import { Paper, Typography, useMediaQuery, Rating } from "@mui/material";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import Rating from "@mui/lab/Rating";
 
 import useStyles from "./styles";
 
+import mapStyles from "./mapStyles";
 const Map = ({
   setCoordinates,
   setBounds,
@@ -25,7 +25,7 @@ const Map = ({
         center={coordinates}
         defaultZoom={10}
         margin={[50, 50, 50, 50]}
-        options={""}
+        options={{ disableDefaultUI: true, zoomCont: true, styles: mapStyles }}
         onChange={(e) => {
           console.log(e);
           setCoordinates({ lat: e.center.lat, lng: e.center.lng });

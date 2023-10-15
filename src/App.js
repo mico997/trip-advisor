@@ -29,13 +29,13 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    const filtered = places.filter((place) => place.rating > rating);
+    const filtered = places.filter((place) => Number(place.rating) > rating);
 
     setFilteredPlaces(filtered);
   }, [rating]);
 
   useEffect(() => {
-    if (bounds.sw && bounds.ne) {
+    if (bounds) {
       setIsLoading(true);
 
       // getWeatherData(places).then((data) =>
@@ -45,6 +45,7 @@ const App = () => {
       getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
         setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
         setFilteredPlaces([]);
+        setRating("");
         setIsLoading(false);
       });
     }

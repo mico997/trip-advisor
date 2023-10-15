@@ -8,10 +8,10 @@ import {
   CardContent,
   CardActions,
   Chip,
+  Rating,
 } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PhoneIcon from "@mui/icons-material/Phone";
-import Rating from "@mui/lab/Rating";
 
 import useStyles from "./styles";
 

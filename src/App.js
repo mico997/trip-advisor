@@ -49,7 +49,7 @@ const App = () => {
         setIsLoading(false);
       });
     }
-  }, [bounds, coords, type]);
+  }, [bounds, type]);
 
   return (
     <>

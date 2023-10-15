@@ -25,7 +25,7 @@ const Map = ({
         center={coords}
         defaultZoom={14}
         margin={[50, 50, 50, 50]}
-        options={{ disableDefaultUI: true, zoomCont: true, styles: mapStyles }}
+        options={{ zoomCont: true, styles: mapStyles }}
         onChange={(e) => {
           console.log(e);
           setCoords({ lat: e.center.lat, lng: e.center.lng });

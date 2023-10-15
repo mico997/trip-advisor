@@ -7,9 +7,9 @@ import useStyles from "./styles";
 
 import mapStyles from "./mapStyles";
 const Map = ({
-  setCoordinates,
+  setCoords,
   setBounds,
-  coordinates,
+  coords,
   places,
   setChildClicked,
   // weatherData,
@@ -21,14 +21,14 @@ const Map = ({
     <div className={classes.mapContainer}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
-        defaultCenter={coordinates}
-        center={coordinates}
-        defaultZoom={10}
+        defaultCenter={coords}
+        center={coords}
+        defaultZoom={14}
         margin={[50, 50, 50, 50]}
         options={{ disableDefaultUI: true, zoomCont: true, styles: mapStyles }}
         onChange={(e) => {
           console.log(e);
-          setCoordinates({ lat: e.center.lat, lng: e.center.lng });
+          setCoords({ lat: e.center.lat, lng: e.center.lng });
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
         }}
         onChildClick={(child) => setChildClicked(child)}

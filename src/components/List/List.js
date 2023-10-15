@@ -22,8 +22,8 @@ const List = ({
   rating,
   setRating,
 }) => {
-  const classes = useStyles();
   const [elRefs, setElRefs] = useState([]);
+  const classes = useStyles();
 
   useEffect(() => {
     const refs = Array(places?.length)

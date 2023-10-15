@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { CssBaseline, Grid } from "@mui/material";
 
-import { getPlacesData } from "./api";
+import { getPlacesData } from "./api/travelAdvisorApi";
 import Header from "./components/Header/Header";
 import List from "./components/List/List";
 import Map from "./components/Map/Map";
@@ -14,7 +14,7 @@ const App = () => {
   const [filteredPlaces, setFilteredPlaces] = useState([]);
   const [places, setPlaces] = useState([]);
 
-  const [coordinates, setCoordinates] = useState({});
+  const [coords, setCoords] = useState({});
   const [bounds, setBounds] = useState({});
 
   const [childClicked, setChildClicked] = useState(null);
@@ -23,7 +23,7 @@ const App = () => {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       ({ coords: { latitude, longitude } }) => {
-        setCoordinates({ lat: latitude, lng: longitude });
+        setCoords({ lat: latitude, lng: longitude });
       }
     );
   }, []);
@@ -54,13 +54,13 @@ const App = () => {
   return (
     <>
       <CssBaseline />
-      <Header setCoordinates={setCoordinates} />
+      <Header setCoords={setCoords} />
       <Grid container spacing={3} style={{ width: "100%" }}>
         <Grid item xs={12} md={4}>
           <List
-            places={filteredPlaces.length ? filteredPlaces : places}
-            childClicked={childClicked}
             isLoading={isLoading}
+            childClicked={childClicked}
+            places={filteredPlaces.length ? filteredPlaces : places}
             type={type}
             setType={setType}
             rating={rating}
@@ -69,9 +69,9 @@ const App = () => {
         </Grid>
         <Grid item xs={12} md={8}>
           <Map
-            setCoordinates={setCoordinates}
+            setCoords={setCoords}
             setBounds={setBounds}
-            coordinates={coordinates}
+            coords={coords}
             places={filteredPlaces.length ? filteredPlaces : places}
             setChildClicked={setChildClicked}
             // weatherData={weatherData}

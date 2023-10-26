@@ -1,3 +1,9 @@
+# Getting Started with Trip Advisor 
+To be able to take advantage of the full functionality of this website, ensure your location is turned on and your browser has access to your location
+
+You can also search a location to view its Map , Hotels , Restaurants and Attractions.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

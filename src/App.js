@@ -5,8 +5,17 @@ import { getPlacesData } from "./api/travelAdvisorApi";
 import Header from "./components/Header/Header";
 import List from "./components/List/List";
 import Map from "./components/Map/Map";
+import Checker from "./components/default-page/checker";
 
 const App = () => {
+  // const checkLocation = () => {
+  //   if (coords.lat && coords.lng) {
+  //     setLocation(true);
+  //   } else {
+  //     setLocation(false);
+  //   }
+  // };
+
   const [type, setType] = useState("restaurants");
   const [rating, setRating] = useState("");
 
@@ -19,14 +28,26 @@ const App = () => {
 
   const [childClicked, setChildClicked] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [location, setLocation] = useState(false);
 
   useEffect(() => {
+    // console.log("ran useeffect", coords);
     navigator.geolocation.getCurrentPosition(
       ({ coords: { latitude, longitude } }) => {
         setCoords({ lat: latitude, lng: longitude });
       }
     );
+
+    // console.log("ran useeffect", coords);
   }, []);
+
+  useEffect(() => {
+    if (coords.lat && coords.lng) {
+      setLocation(true);
+    } else {
+      setLocation(false);
+    }
+  }, [coords]);
 
   useEffect(() => {
     const filtered = places?.filter((place) => Number(place.rating) > rating);
@@ -68,14 +89,18 @@ const App = () => {
           />
         </Grid>
         <Grid item xs={12} md={8}>
-          <Map
-            setChildClicked={setChildClicked}
-            setBounds={setBounds}
-            setCoords={setCoords}
-            coords={coords}
-            places={filteredPlaces.length ? filteredPlaces : places}
-            // weatherData={weatherData}
-          />
+          {location ? (
+            <Map
+              setChildClicked={setChildClicked}
+              setBounds={setBounds}
+              setCoords={setCoords}
+              coords={coords}
+              places={filteredPlaces.length ? filteredPlaces : places}
+              // weatherData={weatherData}
+            />
+          ) : (
+            <Checker />
+          )}
         </Grid>
       </Grid>
     </>

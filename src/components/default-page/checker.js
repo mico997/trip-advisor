@@ -11,7 +11,7 @@ function Checker() {
         padding: "80px 20px",
       }}
     >
-      We do Not have acces to your location
+      We do not have access to your location
       <div>
         Please turn on your location & Ensure your browser has access to your
         location

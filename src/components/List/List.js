@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 
 import PlaceDetails from "../PlaceDetails/PlaceDetails";
+import Checker from "../default-page/checker";
 
 import useStyles from "./styles";
 
@@ -21,6 +22,7 @@ const List = ({
   setRating,
   childClicked,
   isLoading,
+  location,
 }) => {
   const [elRefs, setElRefs] = useState([]);
   const classes = useStyles();
@@ -38,6 +40,7 @@ const List = ({
       <Typography varient="h4">
         Restaurants, Hotels & Attractions around you
       </Typography>
+
       {isLoading ? (
         <div className={classes.loading}>
           <CircularProgress size="5rem" />
@@ -71,6 +74,7 @@ const List = ({
               </Select>
             </FormControl>
           </div>
+          {!location ? <Checker /> : null}
           <Grid container spacing={3} className={classes.list}>
             {places?.map((place, i) => (
               <Grid ref={elRefs[i]} item key={i} xs={12}>

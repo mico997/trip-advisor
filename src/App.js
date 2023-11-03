@@ -86,6 +86,7 @@ const App = () => {
             setType={setType}
             rating={rating}
             setRating={setRating}
+            location={location}
           />
         </Grid>
         <Grid item xs={12} md={8}>
